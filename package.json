@@ -1,0 +1,19 @@
+{
+  "name": "meancrudapp",
+  "version": "1.0.0",
+  "description": "Crud app using Angular MongoDB and Express JS and Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaykanda/MEANcrudapp.git"
+  },
+  "author": "Jayachandran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaykanda/MEANcrudapp/issues"
+  },
+  "homepage": "https://github.com/jaykanda/MEANcrudapp#readme"
+}

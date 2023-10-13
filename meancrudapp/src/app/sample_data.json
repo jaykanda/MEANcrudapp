@@ -1,0 +1,26 @@
+[
+    {
+        "fullName" : "Jayachandran",
+        "position" : "Architect",
+        "location" : "Bengaluru",
+        "salary" : 2500000
+    },
+    {
+        "fullName" : "Mohana",
+        "position" : "Teacher",
+        "location" : "Chennai",
+        "salary" : 600000
+    },
+    {
+        "fullName" : "Vikunth",
+        "position" : "Software Engineer",
+        "location" : "Mangalore",
+        "salary" : 300000
+    },
+    {
+        "fullName" : "Varnder",
+        "position" : "UI Developer",
+        "location" : "Australia",
+        "salary" : 5000000
+    }
+]
