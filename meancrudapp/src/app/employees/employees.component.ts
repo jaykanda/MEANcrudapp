@@ -9,17 +9,30 @@ import { Employee } from '../shared/employee.model';
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor(private empService: EmployeeService) {
+  constructor(public empService: EmployeeService) {
 
   }
 
-empList: any;
+  ngOnInit(): void {
+    this.empService.getEmployeeAllInfo();
+  }
 
-ngOnInit(): void {
-  this.empService.getEmployeeAllInfo().subscribe(data => {
-    console.log(data);
-    this.empList = data;
-  });
-}
+  populateInfo(selectedRec: Employee) {
+    this.empService.employeeForm.setValue({
+      "_id": selectedRec._id,
+      "fullname": selectedRec.fullname,
+      "location" : selectedRec.location,
+      "position" : selectedRec.position,
+      "salary" : selectedRec.salary
+    });
 
+  }
+
+  onDelete(_id: string) {
+    if (confirm('Are you ok to delete this record?')) {
+      this.empService.deleteEmployee(_id).subscribe(res => {
+        this.empService.getEmployeeAllInfo();
+      })
+    }
+  }
 }

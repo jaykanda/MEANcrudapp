@@ -16,10 +16,12 @@
                     <th></th>
                     </thead>
                 <tbody>
-                    <tr *ngFor="let emp of empList">
-                        <td>{{emp.fullName}}</td>
-                        <td>{{emp.position}}</td>
-                        <td></td>
+                    <tr *ngFor="let emp of empService.empList">
+                        <td (click)="populateInfo(emp)">{{emp.fullname}}</td>
+                        <td (click)="populateInfo(emp)">{{emp.position}}</td>
+                        <td>
+                            <i class="far fa-trash-alt" (click)="onDelete(emp._id)"></i>
+                        </td>
                     </tr>
                     
                 </tbody>
