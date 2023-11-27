@@ -1,0 +1,54 @@
+<div class="text-bg-dark text-center rounded py-4">
+    <h5 class="display-12">
+        Theater Onboarding form
+ </h5>    
+</div>
+<form class="row" [formGroup]="onBoardService.theaterOnboardForm" (submit)="theaterOnboard()">
+    <div class="col-6 mb-3">
+        <label class="form-label">Theater Name</label>
+        <input class="form-control form-control-lg" placeholder="Enter Full Name" formControlName="theater_name" />
+    </div>
+    <div class="col-6 mb-3">
+        <label class="form-label">Movie Name</label>
+        <input class="form-control form-control-lg" placeholder="Enter Full Name" formControlName="movie_name" />
+    </div>
+    <div class="col-6 mb-3">
+        <label class="form-label">City</label>
+        <!-- <input class="form-control form-control-lg" placeholder="Enter City" formControlName="city" /> -->
+        <select class="form-select" aria-label="multiple select example" formControlName="city" >
+            <option selected>Please select</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bengaluru">Bengaluru</option>
+        </select>
+    </div>
+    <div class="col-6 mb-3">
+        <label class="form-label">Seat Nos</label>
+        <!-- <ng-multiselect-dropdown
+            [placeholder]="'Select seat capacity'"  
+            [settings]="onBoardService.dropdownSettings"
+            [data]="onBoardService.dropdownList"
+            formControlName="seats">
+        </ng-multiselect-dropdown> -->
+        <select class="form-select" aria-label="multiple select example" formControlName="seats" placeholder="Seat capacity">
+            <option selected>Please select</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="150">150</option>
+          </select>
+    </div>
+    <div class="col-6 mb-3">
+        <label class="form-label">Timings</label>
+        <select class="form-select" multiple aria-label="multiple select example" formControlName="showTime" placeholder="Show Time">
+            <option selected>Please select</option>
+            <option value="8AM">8AM</option>
+            <option value="10PM">10PM</option>
+          </select>    
+        </div>
+    <div class="col-6 mb-3">
+        <label class="form-label">Ticket Price</label>
+        <input class="form-control form-control-lg" placeholder="Ticket Price" formControlName="ticketprice" type="number" />
+    </div>
+    <div class="col-3 d-grid">
+        <button class="btn btn-lg btn-primary" type="submit">Add Theater</button>    
+    </div>
+</form>

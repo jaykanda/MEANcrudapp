@@ -20,7 +20,7 @@ export class EmployeesComponent implements OnInit {
   populateInfo(selectedRec: Employee) {
     this.empService.employeeForm.setValue({
       "_id": selectedRec._id,
-      "fullname": selectedRec.fullname,
+      "fullname": selectedRec.fullName,
       "location" : selectedRec.location,
       "position" : selectedRec.position,
       "salary" : selectedRec.salary

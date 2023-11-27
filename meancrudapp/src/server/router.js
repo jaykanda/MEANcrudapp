@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const employeeModel = require('./model/employee.model');
+const { default: mongoose } = require('mongoose');
 
 router.get('/', (req,res) => {
     employeeModel.find()
@@ -13,6 +14,7 @@ router.get('/', (req,res) => {
 })
 
 router.post('/', (req,res,next) => {
+    console.log("Employee data ==> ", req.body);
     employeeModel.create(req.body)
     .then(data => {
         console.log(`BODY ===> ${data}`);
@@ -21,20 +23,22 @@ router.post('/', (req,res,next) => {
 })
 
 router.put('/:id', (req,res,next) => {
-    const ObjectId = require('mongodb').ObjectId;
+    // const ObjectId = require('mongodb').ObjectId;
     const updateRecord = {
-        fullname : req.body.fullname,
+        fullName : req.body.fullname,
         position : req.body.position,
         location : req.body.location,
         salary : req.body.salary
     }
     console.log('Query params ==>', req.params.id);
     console.log('updateRecord ==>', updateRecord);
-    const paramId =  req.params.id.trim();
-    employeeModel.findOneAndUpdate({ _id: new ObjectId(paramId)}, updateRecord).then(data => {
+    const paramId =  req.params.id;
+    const monId = new mongoose.Types.ObjectId(paramId);
+
+    employeeModel.findOneAndUpdate({_id: monId}, {$set : updateRecord}).then(data => {
         console.log(`BODY ===> ${data}`);
-        res.status(201).json(data)})
-    .catch(err => next(err));    
+        res.status(200).json(data)})
+    .catch(err => next(err));
 })
 
 router.delete('/:id', (req,res,next) => {

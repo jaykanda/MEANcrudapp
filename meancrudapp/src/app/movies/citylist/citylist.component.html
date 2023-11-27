@@ -1,0 +1,49 @@
+<div class="col-md-6">
+    <p>Select City</p>
+        <select #cities (change)="onSelected(cities.value)">
+            <option default>Select City</option>
+            <option *ngFor="let city of cityService.cityList">{{city.city_name}}</option>
+        </select>
+</div>
+<div class="col-md-12">
+    <div *ngIf="cityName !== null" >
+        <p>Movies currently in {{cityName}}</p>
+        <div *ngFor="let movie of movieItemList">
+            <div style="cursor: pointer; float: left; padding: 50px; margin: 10px; border: 2px solid #c2c2c2;" (click)="checkTheaterForMovie(movie.movie_name)">
+                {{movie.movie_name}}
+            </div>    
+        </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+
+    <div *ngIf="selectedTheaterInfo !== null">
+      <div>Theater</div>
+        <div *ngFor="let theater of selectedTheaterInfo">
+            <div>
+                {{theater.theater_name}} | Ticket Cost - {{theater.ticketprice | currency: 'INR' }}
+            </div>
+
+            <form class="row" [formGroup]="theaterBookingForm" (submit)="bookingSubmission()">
+                <div class="col-4 md-4" >
+                    <div *ngFor="let item of theater.seats" style="display: inline; margin: 2px;">
+                        <label style="font-size: 11px;">{{item}}</label>                        
+                        <input type="checkbox" [value]="item" (change)="onCheckChange($event)" style="width: 17px; height: 18px;"/>
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <label class="form-label">Show Time</label>
+                    <span *ngFor="let timings of theater.showTime">
+                        {{timings}}
+                        <input type="radio" [value]="timings" (change)="onRadioCheckChange($event)" />
+                    </span>
+                </div>  
+                <div class="col-12 mb-3">
+                    <input type="submit" value="Book the ticket"/>
+                </div>
+            </form>
+        </div>
+    </div> 
+       
+</div>
+
