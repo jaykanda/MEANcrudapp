@@ -13,6 +13,8 @@ export class TheateronboardService {
 
   baseUrl: string = 'http://localhost:3000/api/theaterboarding';
 
+  theaterList: any;
+
   theaterOnboardForm  = this.fb.group({
     theater_name: ['', Validators.required],
     movie_name:[''],
@@ -21,13 +23,20 @@ export class TheateronboardService {
     showTime: ['', Validators.required],
     ticketprice: ['', Validators.required]
   });
+
+  getTheatersInfo() {
+    return this.http.get(this.baseUrl).pipe(catchError(this.errorHandler)).subscribe(data => {
+      console.log("all theater info ==> ", data);
+      this.theaterList = data;
+    });
+  }
   
   postTheaterOnboard(theaterObj: any) {
     return this.http.post(this.baseUrl, theaterObj).pipe(catchError(this.errorHandler));
   }
 
-  putTheater() {
-    return this.http.put(this.baseUrl + '/' + this.theaterOnboardForm.get('_id')?.value, this.theaterOnboardForm.value).pipe(catchError(this.errorHandler));
+  putTheater(updatedForm: any, _id: any) {
+    return this.http.put(this.baseUrl + '/' + _id, updatedForm.value).pipe(catchError(this.errorHandler));
   }
   
   deleteTheater(_id :string) {

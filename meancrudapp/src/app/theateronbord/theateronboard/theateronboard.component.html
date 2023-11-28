@@ -3,7 +3,7 @@
         Theater Onboarding form
  </h5>    
 </div>
-<form class="row" [formGroup]="onBoardService.theaterOnboardForm" (submit)="theaterOnboard()">
+<form class="row" [formGroup]="onBoardService.theaterOnboardForm">
     <div class="col-6 mb-3">
         <label class="form-label">Theater Name</label>
         <input class="form-control form-control-lg" placeholder="Enter Full Name" formControlName="theater_name" />
@@ -49,6 +49,47 @@
         <input class="form-control form-control-lg" placeholder="Ticket Price" formControlName="ticketprice" type="number" />
     </div>
     <div class="col-3 d-grid">
-        <button class="btn btn-lg btn-primary" type="submit">Add Theater</button>    
+        <input type="button" class="btn btn-lg btn-primary" (click)="theaterOnboard()" value="Add Theater" />    
+    </div>
+    <div class="col-3 d-grid">
+        <input type="button" class="btn btn-lg btn-primary" (click)="updateTheaterInfo(onBoardService.theaterOnboardForm)" value="Update Theater" />    
+    </div>
+    <br/><br/>
+    <div class="text-bg-dark text-center rounded py-4">
+        <h5 class="display-12">
+            Theaters
+     </h5>    
+    </div>
+    
+    <div class="col-md-6">
+        <table class="table" cellspacing="3">
+            <thead>
+                <th>Name</th>
+                <th>City</th>
+                <th>Movie</th>
+                <th>Seat capacity</th>
+                <th>Ticket Price</th>
+                <th>Show time</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let theaterInfo of onBoardService.theaterList">
+                    <td>{{theaterInfo.theater_name}}</td>
+                    <td>{{theaterInfo.city}}</td>
+                    <td>{{theaterInfo.movie_name}}</td>
+                    <td>{{theaterInfo.seats.length}}</td>
+                    <td>{{theaterInfo.ticketprice | currency: 'INR'}}</td>
+                    <td><span style="margin-left: 10px; color: blue;" *ngFor="let shows of theaterInfo.showTime">{{shows}}</span></td>
+                    <td (click)="populateTheaterInfo(theaterInfo, theaterInfo._id)">
+                        <i class="far fa-pencil-alt" ></i>
+                    </td>
+                    <td (click)="deleteTheater(theaterInfo._id)">
+                        <i class="far fa-trash-alt" ></i>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
     </div>
 </form>

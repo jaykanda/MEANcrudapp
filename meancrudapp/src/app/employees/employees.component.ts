@@ -25,7 +25,6 @@ export class EmployeesComponent implements OnInit {
       "position" : selectedRec.position,
       "salary" : selectedRec.salary
     });
-
   }
 
   onDelete(_id: string) {
