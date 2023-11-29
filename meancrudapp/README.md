@@ -4,7 +4,28 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+Clone the repo and go to the direcory MEANcrudapp/meancrudapp
+
+Run `npm install` for downloading the packages
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Node server
+
+Go to the directory MEANcrudapp/meancrudapp/src/server 
+
+Run `nodemon index` to start the node server
+
+## For MongoDB server setup
+
+Go to the mongodb installed directory C:\Program Files\MongoDB\Server\7.0\bin
+
+Run `mongod` to start the mongodb server
+Use the mongodb compass and ensure the connection with mongodb://127.0.0.1:27017/dbname
+
+Here dbname is MovieBooking
+
+
 
 ## Code scaffolding
 
