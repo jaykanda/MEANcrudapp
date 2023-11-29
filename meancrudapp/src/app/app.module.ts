@@ -8,12 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CitylistComponent } from './movies/citylist/citylist.component';
 import { TheateronboardComponent } from './theateronbord/theateronboard/theateronboard.component';
+import { BookingdetailsComponent } from './bookingdetails/bookingdetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitylistComponent,
     TheateronboardComponent,
+    BookingdetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,11 @@ export class BookingService {
     return this.http.post(this.baseUrl, bookingData).pipe(catchError(this.errorHandler));    
   }
 
+  bookingConfirmation() {
+    console.log("Confirmed Booking data sent to service file ===> ");
+    return this.http.get(this.baseUrl).pipe(catchError(this.errorHandler));    
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occured', error.error);

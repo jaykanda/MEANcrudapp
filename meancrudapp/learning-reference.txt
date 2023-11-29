@@ -1,0 +1,78 @@
+{
+	"userId" : ObjectId('655f6b7128a0b840cfde1383'),
+	"desingation" : "Senior Manager",
+	"officeLoc" : "Chennai"
+}
+
+db.user.aggregate([{ $match : { _id : ObjectId('655f6b7128a0b840cfde1383')}}, { $lookup: {from: "personalInfo", localField: "_id", foreignField: "userId", as : "personalInfo"}}, {$unwind: "$personalInfo"}, {$lookup : {from: "jobInfo", localField: "_id", foreignField: "userId", as : "jobInfo"}}, {$unwind: "$jobInfo"}]).pretty();
+
+[{ $match : { _id : ObjectId('655f6b7128a0b840cfde1383')}},{ $lookup: {from: "personalInfo", localField: "_id", foreignField: "userId", as : "personalInfo"}},{$unwind: "$personalInfo"},{$project : {"personalInfo._id" : 0,"personalInfo.userId" : 0}}, {$lookup : {from: "jobInfo", localField: "_id", foreignField: "userId", as : "jobInfo"}},{$unwind: "$jobInfo"},{$project : {"jobInfo._id" : 0,"jobInfo.userId" : 0}}]
+
+------------------------------------
+Aggregate of three tables
+==========================
+db.user.aggregate([{ $match : { _id : ObjectId('655f6b7128a0b840cfde1383')}},{ $lookup: {from: "personalInfo", localField: "_id", foreignField: "userId", as : "personalInfo"}},{$unwind: "$personalInfo"},{$project : {"personalInfo._id" : 0,"personalInfo.userId" : 0}}, {$lookup : {from: "jobInfo", localField: "_id", foreignField: "userId", as : "jobInfo"}},{$unwind: "$jobInfo"},{$project : {"jobInfo._id" : 0,"jobInfo.userId" : 0}}]).pretty()
+[
+  {
+    _id: ObjectId('655f6b7128a0b840cfde1383'),
+    user_name: 'Jayachandran',
+    personalInfo: {
+      phone: '9880617467',
+      city: 'Bangalore',
+      relationStatus: 'Married'
+    },
+    jobInfo: { designation: 'Senior Manager', officeLoc: 'Chennai' }
+  }
+]
+
+------------------
+Movie ticketing system - https://abhilash-trial.medium.com/system-design-movie-ticket-booking-bookmyshow-9c5b58e5f479
+
+-----------------
+
+db.collection.aggregate([
+    {
+        $addFields:{
+            "_id":"$Id"
+        }
+    },
+    {
+        $project:{
+            "Id":0
+        }
+    },
+    {
+        $out:"collection"
+    }
+])
+
+Data Set :
+===========
+{ "_id" : ObjectId("5d557c5f7c780d119a01a6de"), "Id" : 4321 }
+{ "_id" : ObjectId("5d557c5f7c780d119a01a6df"), "Id" : 3412 }
+{ "_id" : ObjectId("5d557c5f7c780d119a01a6e0"), "Id" : 1234 }
+
+Output:
+=======
+{ "_id" : 4321 }
+{ "_id" : 3412 }
+{ "_id" : 1234 }
+
+--------------------------------------------------------
+
+Swagger UI
+==========
+https://medium.com/swlh/automatic-api-documentation-in-node-js-using-swagger-dd1ab3c78284
+
+['11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40'
+,'41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70',
+'71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
+
+-------------------------------------
+Multiple form controls
+https://stackoverflow.com/questions/45272272/how-to-store-multiple-checkbox-values-in-reactive-form-in-angular2
+
+MEAN App on AWS
+------------------------
+https://www.youtube.com/watch?v=Gz_7WMjv6sE
+https://blog.devgenius.io/deploy-your-mean-app-on-aws-ec2-a24fe3c2073f

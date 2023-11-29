@@ -1,0 +1,20 @@
+
+<div class="text-bg-dark text-center rounded py-4">
+    <h5 class="display-12">
+        Ticket Confirmation
+ </h5>    
+</div>
+<div class="col-md-6">
+    <div *ngFor="let tickets of confirmedBooking" style="border-bottom: 1px solid #c2c2c2;">
+        <p><span style="font-weight: bold;">Theater Name:&nbsp;</span>{{tickets.theatername}}</p>
+        <p><span style="font-weight: bold;">Movie Name:&nbsp;</span>{{tickets.moviename}}</p>
+        <p><span style="font-weight: bold;">Seats:&nbsp;</span><span *ngFor="let seatno of tickets.seats">{{seatno}}&nbsp;</span></p>
+        <p><span style="font-weight: bold;">Show time:&nbsp;</span><span *ngFor="let show of tickets.showtime">{{show}}&nbsp;</span></p>
+        <p><span style="font-weight: bold;">Ticket Cost:&nbsp;</span>{{tickets.payment | currency:'INR'}}</p>
+        <p><span style="font-weight: bold;">Booked Date:&nbsp;</span>{{tickets.bookingdate}}</p>
+    </div>
+    
+</div>
+<div class="col-md-12">
+</div>
+

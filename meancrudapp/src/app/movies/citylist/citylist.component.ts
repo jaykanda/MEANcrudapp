@@ -9,6 +9,7 @@ import { TheaterService } from 'src/app/shared/theater.service';
   templateUrl: './citylist.component.html',
   styleUrls: ['./citylist.component.css']
 })
+
 export class CitylistComponent implements OnInit {
 
   constructor(public fb: FormBuilder, public cityService: CityService, public theaterService: TheaterService, public bookService: BookingService) {}
