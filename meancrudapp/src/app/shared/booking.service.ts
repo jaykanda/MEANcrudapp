@@ -10,7 +10,7 @@ export class BookingService {
 
   constructor(private http: HttpClient) { }
   
-  baseUrl: string = 'http://localhost:3000/api/booking';
+  baseUrl: string = '/api/booking';
 
   ticketBooking(bookingData: any) {
     console.log("Booking data sent to service file ===> ", bookingData);

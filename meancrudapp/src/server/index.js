@@ -13,14 +13,14 @@ const theaterOnboarding = require('./router_theateronboarding.js');
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use('/api/employee', emproutes);
-app.use('/api/cities', cityroutes);
-app.use('/api/theaters', theaterSelection);
-app.use('/api/booking', bookingroutes); 
-app.use('/api/theaterboarding', theaterOnboarding); 
+// app.use('/api/employee', emproutes);
+app.use('/', cityroutes);
+app.use('/', theaterSelection);
+app.use('/', bookingroutes); 
+app.use('/', theaterOnboarding); 
 
 dbConnect().then(() => {
     console.log('DB connected successfully!!');

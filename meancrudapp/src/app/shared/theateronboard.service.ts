@@ -11,7 +11,7 @@ export class TheateronboardService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/api/theaterboarding';
+  baseUrl: string = '/api/theaterboarding';
 
   theaterList: any;
 

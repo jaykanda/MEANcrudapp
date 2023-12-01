@@ -10,7 +10,7 @@ export class CityService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/api/cities';
+  baseUrl: string = '/api/cities';
 
   cityList: any;
   

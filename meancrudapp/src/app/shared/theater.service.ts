@@ -10,7 +10,7 @@ export class TheaterService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/api/theaters';
+  baseUrl: string = '/api/theaters';
 
   getTheaterforMovies(movieName: String) {
     let postObj = { "movieName" : movieName };
