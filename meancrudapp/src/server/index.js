@@ -17,10 +17,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 // app.use('/api/employee', emproutes);
-app.use('/api/cities', cityroutes);
-app.use('/api/theaters', theaterSelection);
-app.use('/api/booking', bookingroutes); 
-app.use('/api/theaterboarding', theaterOnboarding); 
+app.use('/', cityroutes);
+app.use('/', theaterSelection);
+app.use('/', bookingroutes); 
+app.use('/', theaterOnboarding); 
 
 dbConnect().then(() => {
     console.log('DB connected successfully!!');
