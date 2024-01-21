@@ -76,3 +76,7 @@ MEAN App on AWS
 ------------------------
 https://www.youtube.com/watch?v=Gz_7WMjv6sE
 https://blog.devgenius.io/deploy-your-mean-app-on-aws-ec2-a24fe3c2073f
+
+Microfront End docs
+======================
+https://martinfowler.com/articles/micro-frontends.html#IntegrationApproaches
